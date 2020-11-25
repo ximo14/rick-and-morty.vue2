@@ -1,15 +1,6 @@
 <template>
 	<div id="app">
-		<b-navbar variant="faded">
-			<b-navbar-nav class="ml-auto">
-				<b-nav-item href="#">
-					<b-button class="my-2 my-sm-0" type="submit" variant="primary">
-						<font-awesome-icon :icon="['fas','user']" color="white" font-size="30px" /> Access
-					</b-button>
-				</b-nav-item>
-			</b-navbar-nav>
-		</b-navbar>
-
+		<Nav></Nav>
 		<div class="container">
 			<img alt="Vue logo" src="./assets/rick_and_morty_logo.png" class="img-fluid" id="logo">
 			<Home></Home>
@@ -19,11 +10,13 @@
 
 <script>
 	import Home from './views/Home.vue'
+	import Nav from './components/Nav/Nav.vue'
 
 	export default {
 		name: 'App',
 		components: {
-			Home
+			Home,
+			Nav
 		}
 	}
 </script>
