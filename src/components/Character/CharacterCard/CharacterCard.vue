@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="d-flex justify-content-center">
         <div>
             <b-card :title="character.name" :img-src="character.image" img-alt="Image" img-top tag="article"
                 style="max-width: 20rem;" class="mb-5">
@@ -68,17 +68,25 @@
             },
 
             getCharactersLiked() {
+
                 if (localStorage.getItem('charactersLiked')) {
+
                     try {
+
                         this.charactersLiked = JSON.parse(localStorage.getItem('charactersLiked'));
+
                     } catch (e) {
+
                         localStorage.removeItem('charactersLiked');
+
                     }
                 }
             },
 
             characterLikedContains(characterId) {
+
                 return this.charactersLiked.indexOf(characterId) > -1
+
             }
         }
     }
