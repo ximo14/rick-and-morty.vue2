@@ -2,20 +2,21 @@
 	<div id="app">
 		<Nav></Nav>
 		<div class="container">
-			<img alt="Vue logo" src="./assets/rick_and_morty_logo.png" class="img-fluid" id="logo">
-			<Home></Home>
+			<b-link :to="{ path: '/' }" exact>
+				<img alt="Vue logo" src="./assets/rick_and_morty_logo.png" class="img-fluid" id="logo">
+			</b-link>
+			<router-view />
 		</div>
 	</div>
 </template>
 
 <script>
-	import Home from './views/Home.vue'
+	// import Home from './views/Home.vue'
 	import Nav from './components/Nav/Nav.vue'
 
 	export default {
 		name: 'App',
 		components: {
-			Home,
 			Nav
 		}
 	}
