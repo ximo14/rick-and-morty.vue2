@@ -96,6 +96,7 @@
     .card-title {
         font-size: 17px;
         text-align: left;
+        color: black;
     }
 
     #like-icon {

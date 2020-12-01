@@ -2,7 +2,7 @@
     <b-navbar variant="faded">
         <b-navbar-nav class="ml-auto">
             <b-nav-item>
-                <b-link :to="{ path: 'about' }">
+                <b-link :to="{ path: 'auth' }">
                     <b-button class="my-2 my-sm-0" type="submit" variant="primary">
                         <font-awesome-icon :icon="['fas','user']" color="white" font-size="30px" /> Access
                     </b-button>

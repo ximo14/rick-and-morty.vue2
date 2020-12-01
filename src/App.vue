@@ -1,10 +1,6 @@
 <template>
 	<div id="app">
-		<Nav></Nav>
 		<div class="container">
-			<b-link :to="{ path: '/' }" exact>
-				<img alt="Vue logo" src="./assets/rick_and_morty_logo.png" class="img-fluid" id="logo">
-			</b-link>
 			<router-view />
 		</div>
 	</div>
@@ -12,13 +8,11 @@
 
 <script>
 	// import Home from './views/Home.vue'
-	import Nav from './components/Nav/Nav.vue'
+	// import Nav from './components/Nav/Nav.vue'
 
 	export default {
 		name: 'App',
-		components: {
-			Nav
-		}
+		
 	}
 </script>
 
@@ -28,7 +22,7 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		text-align: center;
-		color: #2c3e50;
+		color: white;
 	}
 
 	#logo {
