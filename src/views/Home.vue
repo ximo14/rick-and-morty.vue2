@@ -17,6 +17,23 @@
             Nav,
             Logo,
             CharacterList
+        },
+        computed: {
+            checkIsLoggedIn() {
+                return this.$store.getters.getUser.isLoggedIn;
+            }
+        },
+        watch: {
+            checkIsLoggedIn(value) {
+                if (!value) {
+                    this.$router.push('/auth');
+                }
+            }
+        },
+        mounted() {
+            if (!this.$store.getters.getUser.isLoggedIn) {
+                this.$router.push('/auth');
+            }
         }
     }
 </script>

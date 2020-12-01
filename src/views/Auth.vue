@@ -10,7 +10,7 @@
 								description="We'll never share your email with anyone else." class="text-left">
 								<b-input-group prepend="👨‍💻" class="mb-2 mr-sm-2 mb-sm-0">
 									<b-form-input type="email" v-model="form.email"
-										placeholder="rickandmorty@aliens.com">
+										placeholder="rickandmorty@space.com">
 									</b-form-input>
 								</b-input-group>
 							</b-form-group>
@@ -43,14 +43,20 @@
 			return {
 				form: {
 					email: '',
-					password: ''
+					password: '',
+					isLoggedIn: false
 				}
 			}
 		},
 		methods: {
-			formSubmitted(e) {
-				console.log("hola")
-				e.preventDefault();
+			formSubmitted() {
+				
+				this.form.isLoggedIn = true;
+
+				this.$store.dispatch('setIsLoggedIn', this.form)
+
+				this.$router.push('/');
+				
 			}
 		}
 	}
