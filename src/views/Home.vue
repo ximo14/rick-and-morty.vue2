@@ -11,6 +11,8 @@
     import Logo from '../components/Logo/Logo'
     import CharacterList from '../components/Character/CharacterList/CharacterList'
 
+    import { mapGetters } from 'vuex'
+
     export default {
         name: 'Home',
         components: {
@@ -19,20 +21,21 @@
             CharacterList
         },
         computed: {
+            ...mapGetters('auth', ['getUser']),
             checkIsLoggedIn() {
-                return this.$store.getters.getUser.isLoggedIn;
+                return this.getUser.isLoggedIn;
             }
         },
         watch: {
             checkIsLoggedIn(value) {
                 if (!value) {
-                    this.$router.push('/auth');
+                    this.$router.push({name: 'Auth'});
                 }
             }
         },
         mounted() {
-            if (!this.$store.getters.getUser.isLoggedIn) {
-                this.$router.push('/auth');
+            if (!this.getUser.isLoggedIn) {
+                this.$router.push({name: 'Auth'});
             }
         }
     }

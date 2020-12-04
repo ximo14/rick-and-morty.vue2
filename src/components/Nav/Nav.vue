@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
     export default {
         name: 'Nav',
         data() {
@@ -29,14 +30,18 @@
                 }
             }
         },
+        computed: {
+            ...mapGetters('auth', ['getUser'])
+        },
         mounted() {
-            this.user.isLoggedIn = this.$store.getters.getUser.isLoggedIn;
-            this.user.email = this.$store.getters.getUser.email;
+            this.user.isLoggedIn = this.getUser.isLoggedIn;
+            this.user.email = this.getUser.email;
         },
         methods: {
+            ...mapActions('auth', ['setIsLoggedIn']),
             logout() {
-                this.$store.dispatch('setIsLoggedIn', false)
-                this.user.isLoggedIn = this.$store.getters.getUser.isLoggedIn
+                this.setIsLoggedIn(false);
+                this.user.isLoggedIn = this.getUser.isLoggedIn
             }
         }
 

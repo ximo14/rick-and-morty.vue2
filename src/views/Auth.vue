@@ -32,6 +32,7 @@
 </template>
 
 <script>
+	import { mapActions } from 'vuex';
 	import Logo from './../components/Logo/Logo'
 
 	export default {
@@ -49,14 +50,15 @@
 			}
 		},
 		methods: {
+			...mapActions('auth', ['setIsLoggedIn']),
 			formSubmitted() {
-				
+
 				this.form.isLoggedIn = true;
 
-				this.$store.dispatch('setIsLoggedIn', this.form)
+				this.setIsLoggedIn(this.form);
 
-				this.$router.push('/');
-				
+				this.$router.push({name: 'Home'});
+
 			}
 		}
 	}
