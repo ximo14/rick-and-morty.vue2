@@ -17,7 +17,7 @@ const auth = {
 
             if (state.user.isLoggedIn) {
 
-                const parsed = JSON.stringify(this.state.user);
+                const parsed = JSON.stringify(state.user);
 
                 localStorage.setItem('user', parsed);
 
@@ -28,10 +28,12 @@ const auth = {
                     try {
 
                         localStorage.removeItem('user');
+                        localStorage.removeItem('charactersLiked');
 
                     } catch (error) {
 
                         localStorage.removeItem('user');
+                        localStorage.removeItem('charactersLiked');
 
                     }
                 }
@@ -47,7 +49,14 @@ const auth = {
     },
 
     getters: {
-        getUser: state => state.user
+        getUser: state => {
+            let user = localStorage.getItem('user');
+            if (user) {
+                state.user = JSON.parse(user);
+            }
+
+            return state.user;
+        }
     }
 }
 

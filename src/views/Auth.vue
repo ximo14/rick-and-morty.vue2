@@ -1,9 +1,8 @@
 <template>
 	<div>
 		<Logo></Logo>
-		<b-row>
-			<b-col cols=12 offset-md="3">
-				<b-card title="Welcome" class="w-50">
+		<div class="d-flex justify-content-center">
+				<b-card title="Welcome" class="auth-card">
 					<b-card-text>
 						<b-form @submit="formSubmitted">
 							<b-form-group id="input-group-1" label-for="input-1"
@@ -25,14 +24,13 @@
 						</b-form>
 					</b-card-text>
 				</b-card>
-			</b-col>
-		</b-row>
+			</div>
 
 	</div>
 </template>
 
 <script>
-	import { mapActions } from 'vuex';
+	import { mapActions, mapGetters } from 'vuex';
 	import Logo from './../components/Logo/Logo'
 
 	export default {
@@ -49,6 +47,9 @@
 				}
 			}
 		},
+		computed: {
+            ...mapGetters('auth', ['getUser']),
+		},
 		methods: {
 			...mapActions('auth', ['setIsLoggedIn']),
 			formSubmitted() {
@@ -60,12 +61,24 @@
 				this.$router.push({name: 'Home'});
 
 			}
+		},
+		mounted() {
+			if (this.getUser.isLoggedIn) {
+                this.$router.push({name: 'Home'});
+            }
 		}
 	}
 </script>
 
 <style>
-	b-card {
+	.auth-card {
 		color: black;
+		width: 50%
+	}
+
+	@media (max-width: 768px) {
+		.auth-card {
+			width: 100%
+		}
 	}
 </style>

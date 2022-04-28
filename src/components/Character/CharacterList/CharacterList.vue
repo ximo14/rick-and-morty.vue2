@@ -21,11 +21,7 @@
             }
         },
         mounted() {
-            axios.get('https://sampleapis.com/rickandmorty/api/characters', {
-                    params: {
-                        _limit: 19
-                    }
-                })
+            axios.get('https://api.sampleapis.com/rickandmorty/characters', {})
                 .then(response => this.characters = response.data)
         }
     }
